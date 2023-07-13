@@ -20,14 +20,13 @@ const mysql = require('mysql2/promise');
         }
     };
     
-    mysqlHelper.query = async(query, fields)=>{
-        try{
-            // console.log(dbClient.host)
-            let res=await dbClient.query(query,fields);
-            return res;
-        }catch(error){
-            throw error;
-    }
-    }
+    mysqlHelper.query = async (query, params) => {
+        try {
+          let res = await dbClient.query(query, params);
+          return res;
+        } catch (error) {
+          throw error;
+        }
+      };
 
 })(module.exports);

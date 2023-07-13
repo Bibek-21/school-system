@@ -10,12 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       uuid: {
+        allowNull: false,
         type: Sequelize.UUID
       },
       bookName: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       bookId: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       price: {
@@ -25,11 +28,9 @@ module.exports = {
         type: Sequelize.DATE
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

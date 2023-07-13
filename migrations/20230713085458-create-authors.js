@@ -10,26 +10,29 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       uuid: {
+        allowNull: false,
+
         type: Sequelize.UUID
       },
       authorName: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       address: {
+
         type: Sequelize.STRING
       },
       Contact: {
         type: Sequelize.INTEGER
       },
       bookId: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

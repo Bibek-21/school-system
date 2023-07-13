@@ -1,6 +1,6 @@
 "use strict";
 (() => {
     module.exports = {
-        mysqlHelper: require("./mySqlHelper"),
+        mysqlHelper: require("./mySqlHelper.js"),
     }
 })();

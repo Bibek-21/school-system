@@ -1,15 +1,15 @@
 const express= require('express');
 const bodyParser = require('body-parser');
-const mysqlHelper= require('./helper/mysqlHelper.js');
+const mysqlHelper= require('./helper/mySqlHelper.js');
 const app = express();
 app.use(express.json());
 
-const mainroute = require("./routes/mainroutes.js");
+const mainroute = require("./routes/index.js");
 const dotenv = require("dotenv");
 dotenv.config();
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use("/",mainroute);
+app.use("/api-v1",mainroute);
 const port = process.env.PORT;
 app.listen(port,()=>{
     mysqlHelper.init();  
