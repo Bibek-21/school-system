@@ -41,6 +41,11 @@ module.exports = {
           isIn: [[1, 2, 3]]
         }
       },
+      isDeleted:{
+        type: Sequelize.BOOLEAN,
+        default: 0
+
+      },
       createdAt: {
         type: Sequelize.STRING
       },

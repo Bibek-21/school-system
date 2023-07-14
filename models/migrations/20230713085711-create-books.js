@@ -27,6 +27,11 @@ module.exports = {
       issueDate: {
         type: Sequelize.DATE
       },
+      isDeleted:{
+        type: Sequelize.BOOLEAN,
+        default: 0
+
+      },
       createdAt: {
         type: Sequelize.STRING
       },

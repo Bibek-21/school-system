@@ -30,6 +30,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      isDeleted:{
+        type: Sequelize.BOOLEAN,
+        default: 0
+
+      },
       createdAt: {
         type: Sequelize.STRING
       },
