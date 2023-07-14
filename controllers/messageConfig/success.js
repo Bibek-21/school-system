@@ -3,7 +3,7 @@
 {
     module.exports=
     {
-        successResponse:"Data Found successfully.....",
+        readSucess:"Data Found successfully.....",
         createSucess:"Data Created Sucessfully...."
     }
 

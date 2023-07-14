@@ -17,13 +17,18 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      teacherId:{
+        allowNull: false,
+        type: Sequelize.INTEGER
+
+      },
       address: {
         allowNull: false,
         type: Sequelize.STRING
       },
       phone: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(10) // Adjust the length as per your requirements
       },
       majorSubject: {
         allowNull: false,
@@ -37,10 +42,10 @@ module.exports = {
         }
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       }
     });
   },

@@ -3,7 +3,7 @@
 {
     module.exports=
     {
-        failureResponse:"Data not Found .....",
+        readFailure:"Data not Found .....",
         createFailure:"Data not Created ...."
     }
 

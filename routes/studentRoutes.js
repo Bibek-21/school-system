@@ -11,7 +11,7 @@
     router.post('/createstudent',student.createStudent);
     // router.put('/updatestudent/:uuid',student.updateStudent);
     // // router.delete('/deletestudent/:uuid',student.deleteStudent);
-    // router.get('/selectstudent',student.selectStudent);
+    router.get('/readstudent/:symbolNo',student.readStudent);
    
 
 

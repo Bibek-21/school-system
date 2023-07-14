@@ -20,9 +20,9 @@ const mysql = require('mysql2/promise');
         }
     };
     
-    mysqlHelper.query = async (query, params) => {
+    mysqlHelper.query = async (query) => {
         try {
-          let res = await dbClient.query(query, params);
+          let res = await dbClient.query(query);
           return res;
         } catch (error) {
           throw error;

@@ -34,8 +34,9 @@ module.exports = {
       },
       guardianContact: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(10) // Adjust the length as per your requirements
       },
+      
       borrowedBookId: {
         type: Sequelize.INTEGER
       },
@@ -51,10 +52,10 @@ module.exports = {
         }
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       }
     });
   },

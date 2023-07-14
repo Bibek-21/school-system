@@ -23,17 +23,18 @@ module.exports = {
         type: Sequelize.STRING
       },
       Contact: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.STRING(10) // Adjust the length as per your requirements
       },
       bookId: {
         allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       }
     });
   },

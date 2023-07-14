@@ -1,6 +1,6 @@
 "use strict";
 
-const sql = require("../../sql/studentSql/index");
+const sql = require("../../sql/teacherSql/index");
 const message = require("../../messageConfig/index");
 
 (() => {
@@ -9,21 +9,18 @@ const message = require("../../messageConfig/index");
 
             const obj = {
 
-                studentName: req.body.studentName,
-                guardian: req.body.guardian,
-                address: req.body.address,
-                DOB: req.body.DOB,
-                symbolNo: req.body.symbolNo,
-                guardianContact: req.body.guardianContact,
-                borrowedBookId: req.body.borrowedBookId,
-                classTeacherId: req.body.classTeacherId,
-                accessStatus: req.body.accessStatus
+                teacherName: req.body.teacherName,
+                teacherId: req.body.teacherId,
+                address: req.body.address ,
+                phone: req.body.phone ,
+                majorSubject: req.body.majorSubject ,
+                accessStatus: req.body.accessStatus 
 
             };
 
             // const info = await helper.validationHelper.userinfo(obj);
 
-            const content = await sql.createStudent(obj);
+            const content = await sql.createTeacher(obj);
         if (content == true) {
                 res.status(200).send({
                     message: message.success.createSucess,
