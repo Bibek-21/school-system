@@ -3,8 +3,10 @@
     module.exports = {
         createBook: require("./createBook.js"),
         readBook: require("./readBook.js"),
-        // createBook:require("./"),
-        // createBook: require("./"),
+        updateBook:require("./updateBook.js"),
+        deleteBook: require("./deleteBook.js"),
+        findStudentByBookId:require("./findStudentByBookId.js")
+
 
     }
 })();

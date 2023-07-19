@@ -7,7 +7,13 @@ const helper = require("../../../helper/index.js");
         try {
 
 
-            const querystring = sqlstring.format(`select * from books where bookId= ? and isDeleted = 0`, [req.params.bookId]);
+            const querystring = sqlstring.format(`SELECT students.studentName, students.symbolNo, teachers.teacherName,books.bookName
+                FROM ((students
+                INNER JOIN teachers ON students.classteacherId = teachers.teacherId)
+                INNER JOIN books ON books.bookId = students.borrowedBookId)
+                            
+                where  students.symbolNo=?`, [req.params.symbolNo]
+            );
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)
 
@@ -30,4 +36,4 @@ const helper = require("../../../helper/index.js");
     }
 
 
-}) ();
+})();

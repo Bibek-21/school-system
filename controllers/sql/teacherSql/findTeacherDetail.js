@@ -7,12 +7,16 @@ const helper = require("../../../helper/index.js");
         try {
 
 
-            const querystring = sqlstring.format(`update students set isDeleted=1  where uuid= ?`, [req.params.uuid]);
+            const querystring = sqlstring.format(`SELECT students.studentName, students.symbolNo, teachers.teacherName
+                FROM students
+                INNER JOIN teachers ON students.classteacherId = teachers.teacherId
+                where teachers.teacherId=? `,[req.params.teacherId]
+            );
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)
 
-            if (sqlquery.affectedRows>0) {
-                return true;
+            if (sqlquery[0]) {
+                return sqlquery;
             }
             else {
                 return false;

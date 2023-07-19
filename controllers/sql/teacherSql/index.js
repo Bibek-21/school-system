@@ -5,6 +5,7 @@
         readTeacher: require("./readTeacher.js"),
         updateTeacher:require("./updateTeacher.js"),
         deleteTeacher: require("./deleteTeacher.js"),
+        findTeacherDetail:require("./findTeacherDetail.js")
 
     }
 })();

@@ -1,32 +1,42 @@
 "use strict";
-const sqlstring = require("sqlstring");
-const helper = require("../../../helper/index.js");
+
+const sql = require("../../sql/authorsSql/index");
+const message = require("../../messageConfig/index");
+
 (() => {
-    module.exports = async (obj) => {
+    module.exports = async (req, res) => {
         try {
-            const { v4: uuidv4 } = require('uuid');
-            const now = new Date().getTime();
-           
 
-            const querystring = sqlstring.format(`INSERT INTO books  (uuid, authorName, address, Contact, bookId,  createdAt) VALUES (?, ?, ?, ?, ?, ?) `, [
-                uuidv4(),
-                obj.authorName,
-                obj.address,
-                obj.Contact,
-                obj.bookId,
-                now
-            ]);
+            const obj = {
+                
+                authorName: req.body.authorName,
+                address: req.body.address,
+                Contact: req.body.Contact,
+                bookId: req.body.bookId
+              };
 
+            // const info = await helper.validationHelper.userinfo(obj);
 
-            const [sqlquery] = await helper.mysqlHelper.query(querystring);
-
-            if (sqlquery.affectedRows > 0) {
-                return true;
-            } else {
-                return false;
+            const content = await sql.createAuthor(obj);
+        if (content == true) {
+                res.status(200).send({
+                    message: message.success.createSucess,
+                })
             }
+            else {
+                res.status(400).send({
+                    message: message.failure.createFailure,
+                })
+            }
+
+
+
+
         } catch (error) {
             console.log(error);
+
         }
+
     }
+
 })();

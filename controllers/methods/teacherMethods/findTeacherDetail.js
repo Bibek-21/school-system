@@ -1,11 +1,11 @@
 "use strict";
-const sql = require("../../sql/authorsSql/index");
+const sql = require("../../sql/teacherSql/index");
 const message = require("../../messageConfig/index");
 (() => {
     module.exports = async (req,res) => {
         try {
 
-            const content = await sql.readAuthor(req);
+            const content = await sql.findTeacherDetail(req);
 
             if(content){
                 res.status(200).send({

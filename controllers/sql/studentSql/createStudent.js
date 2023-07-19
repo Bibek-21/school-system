@@ -21,6 +21,8 @@ const helper= require("../../../helper/index.js");
       //   obj.accessStatus,
       //   now
       // ];
+    
+
 
       const querystring = sqlstring.format(`INSERT INTO students  (uuid, studentName, guardian, address, DOB, symbolNo, guardianContact, borrowedBookId, classTeacherId, accessStatus, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `,[ uuidv4(),
         obj.studentName,
@@ -42,6 +44,7 @@ const helper= require("../../../helper/index.js");
       } else {
         return false;
       }
+    
     } catch (error) {
       console.log(error);
     }

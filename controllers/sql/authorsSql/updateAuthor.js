@@ -6,13 +6,13 @@ const helper = require("../../../helper/index.js");
     module.exports = async (req) => {
         try {
 
-
-            const querystring = sqlstring.format(`update students set isDeleted=1  where uuid= ?`, [req.params.uuid]);
+const now = new Date().getTime()
+            const querystring = sqlstring.format(`update authors set authorName =?, updatedAt=?  where uuid= ?`, [req.body.authorName,now,req.params.uuid]);
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)
 
-            if (sqlquery.affectedRows>0) {
-                return true;
+            if (sqlquery.changedRows>0) {
+                return sqlquery;
             }
             else {
                 return false;

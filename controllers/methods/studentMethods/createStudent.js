@@ -2,47 +2,50 @@
 
 const sql = require("../../sql/studentSql/index");
 const message = require("../../messageConfig/index");
+const helper= require("../../../helper/index.js");
 
-(() => {
-    module.exports = async (req, res) => {
-        try {
 
-            const obj = {
+    (() => {
+        module.exports = async (req, res) => {
+            try {
 
-                studentName: req.body.studentName,
-                guardian: req.body.guardian,
-                address: req.body.address,
-                DOB: req.body.DOB,
-                symbolNo: req.body.symbolNo,
-                guardianContact: req.body.guardianContact,
-                borrowedBookId: req.body.borrowedBookId,
-                classTeacherId: req.body.classTeacherId,
-                accessStatus: req.body.accessStatus
+                const obj = {
 
-            };
+                    studentName: req.body.studentName,
+                    guardian: req.body.guardian,
+                    address: req.body.address,
+                    DOB: req.body.DOB,
+                    symbolNo: req.body.symbolNo,
+                    guardianContact: req.body.guardianContact,
+                    borrowedBookId: req.body.borrowedBookId,
+                    classTeacherId: req.body.classTeacherId,
+                    accessStatus: req.body.accessStatus
 
-            // const info = await helper.validationHelper.userinfo(obj);
+                };
+            
 
-            const content = await sql.createStudent(obj);
-        if (content == true) {
-                res.status(200).send({
-                    message: message.success.createSucess,
-                })
+              
+
+                    // const info = await helper.validationHelper.userinfo(obj);
+
+                    const content = await sql.createStudent(obj);
+                    if (content == true) {
+                        res.status(200).send({
+                            message: message.success.createSucess,
+                        })
+                    }
+                    else {
+                        res.status(400).send({
+                            message: message.failure.createFailure,
+                        })
+                    }
+              
+
+            } catch (error) {
+                console.log(error);
+
             }
-            else {
-                res.status(400).send({
-                    message: message.failure.createFailure,
-                })
-            }
-
-
-
-
-        } catch (error) {
-            console.log(error);
 
         }
 
-    }
-
-})();
+    })();

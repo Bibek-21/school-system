@@ -1,33 +1,29 @@
 "use strict";
-const sqlstring = require("sqlstring");
-const helper = require("../../../helper/index.js");
-
+const sql = require("../../sql/teacherSql/index");
+const message = require("../../messageConfig/index");
 (() => {
-    module.exports = async (req) => {
+    module.exports = async (req,res) => {
         try {
 
+            const content = await sql.deleteTeacher(req);
 
-            const querystring = sqlstring.format(`update teachers set isDeleted=1  where uuid= ?`, [req.params.uuid]);
-
-            const [sqlquery] = await helper.mysqlHelper.query(querystring)
-
-            if (sqlquery.affectedRows>0) {
-                return sqlquery;
+            if(content){
+                res.status(200).send({
+                    message: message.success.readSucess,
+                    response:content
+                }) 
             }
-            else {
-                return false;
+            else{
+                res.status(400).send({
+                    message: message.failure.readFailure,
+                })
             }
-        }
 
 
-
-        catch (error) {
+        } catch (error) {
             console.log(error);
 
         }
 
-
     }
-
-
-}) ();
+})();
