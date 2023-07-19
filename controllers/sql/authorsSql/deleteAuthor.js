@@ -7,11 +7,11 @@ const helper = require("../../../helper/index.js");
         try {
 
 
-            const querystring = sqlstring.format(`select * from authors where bookId= ? and isDeleted = 0`, [req.params.bookId]);
+            const querystring = sqlstring.format(`update authors set isDeleted=1  where uuid= ?`, [req.params.uuid]);
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)
 
-            if (sqlquery[0]) {
+            if (sqlquery.affectedRows>0) {
                 return sqlquery;
             }
             else {

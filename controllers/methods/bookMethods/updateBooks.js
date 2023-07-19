@@ -16,7 +16,7 @@ const message = require("../../messageConfig/index");
 
             // };
 
-            const content = await sql.u(req);
+            const content = await sql.updateBook(req);
 
             if(content){
                 res.status(200).send({

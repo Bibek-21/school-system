@@ -4,18 +4,15 @@
     const express = require("express");
     const router = express.Router();
 
-    const book= require("../controllers/methods/bookMethods/index")
+    const author= require("../controllers/methods/authorsMethods/index")
 
 
 
-    router.post('/createbook',book.createBook);
-    router.get('/readbook/:bookId',book.readBook);
-
-    // router.put('/updatestudent/:uuid',student.updateStudent);
-    // // router.delete('/deletestudent/:uuid',student.deleteStudent);
+    router.post('/createauthor',author.createAuthor);
+    router.get('/readauthor/:bookId',author.readAuthor);
+    router.put('/updateauthor/:uuid',author.updateAuthor);
+    router.delete('/deleteauthor/:uuid',author.deleteAuthor);
    
-
-
 
 
     module.exports=router;

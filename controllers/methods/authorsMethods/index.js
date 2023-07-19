@@ -1,10 +1,10 @@
 "use strict";
 (() => {
     module.exports = {
-        createAuthor: require("./createAuthors.js"),
+        createAuthor: require("./createAuthor.js"),
         readAuthor: require("./readAuthor.js"),
-        // updateAuthor:require("./"),
-        // deleteAuthor: require("./"),
+        updateAuthor:require("./updateAuthor.js"),
+        deleteAuthor: require("./deleteAuthor.js"),
 
     }
 })();

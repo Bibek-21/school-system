@@ -10,9 +10,8 @@
 
     router.post('/createbook',book.createBook);
     router.get('/readbook/:bookId',book.readBook);
-
-    // router.put('/updatestudent/:uuid',student.updateStudent);
-    // // router.delete('/deletestudent/:uuid',student.deleteStudent);
+    router.put('/updatebook/:uuid',book.updateBook);
+    router.delete('/deletebook/:uuid',book.deleteBook);
    
 
 
