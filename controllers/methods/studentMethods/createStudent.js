@@ -2,7 +2,8 @@
 
 const sql = require("../../sql/studentSql/index");
 const message = require("../../messageConfig/index");
-const helper= require("../../../helper/index.js");
+// const helper= require("../../../helper/index.js");
+// const mysqlHelper= require("./../../../helper/mySqlHelper")
 
 
     (() => {
@@ -22,6 +23,10 @@ const helper= require("../../../helper/index.js");
                     accessStatus: req.body.accessStatus
 
                 };
+
+
+                // const cheker = `select `
+                
             
 
               
