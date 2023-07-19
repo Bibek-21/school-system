@@ -3,8 +3,8 @@
     module.exports = {
         createTeacher: require("./createTeacher.js"),
         readTeacher: require("./readTeacher.js"),
-        // updateStudents:require("./updateStudent"),
-        // deleteStudent: require("./deleteStudent"),
+        updateStudents:require("./updateTeacher.js"),
+        deleteStudent: require("./deleteTeacher.js")
 
     }
 })();

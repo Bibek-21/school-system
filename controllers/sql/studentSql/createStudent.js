@@ -37,7 +37,7 @@ const helper= require("../../../helper/index.js");
 
       const [sqlquery] = await helper.mysqlHelper.query(querystring);
 
-      if (sqlquery[0].affectedRows > 0) {
+      if (sqlquery.affectedRows> 0) {
         return true;
       } else {
         return false;

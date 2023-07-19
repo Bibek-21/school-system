@@ -9,8 +9,8 @@
 
 
     router.post('/createstudent',student.createStudent);
-    // router.put('/updatestudent/:uuid',student.updateStudent);
-    // // router.delete('/deletestudent/:uuid',student.deleteStudent);
+    router.put('/updatestudent/:uuid',student.updateStudent);
+    router.delete('/deletestudent/:uuid',student.deleteStudent);
     router.get('/readstudent/:symbolNo',student.readStudent);
    
 
