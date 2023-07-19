@@ -12,7 +12,7 @@
     router.get('/readauthor/:bookId',author.readAuthor);
     router.put('/updateauthor/:uuid',author.updateAuthor);
     router.delete('/deleteauthor/:uuid',author.deleteAuthor);
-   
+   router.get('/findauthorbybookid/:bookId',author.findAuthorByBookId)
 
 
     module.exports=router;
