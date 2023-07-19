@@ -5,7 +5,7 @@ const message = require("../../messageConfig/index");
     module.exports = async (req,res) => {
         try {
 
-            const content = await sql.readStudent(req);
+            const content = await sql.readBook(req);
 
             if(content){
                 res.status(200).send({

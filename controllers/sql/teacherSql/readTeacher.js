@@ -7,7 +7,7 @@ const helper = require("../../../helper/index.js");
         try {
 
 
-            const querystring = sqlstring.format(`select * from teachers where teacherId= ?`, [req.params.teacherId]);
+            const querystring = sqlstring.format(`select * from teachers where teacherId= ? and isDeleted = 0`, [req.params.teacherId]);
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)
 

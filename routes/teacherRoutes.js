@@ -10,9 +10,8 @@
 
     router.post('/createteacher',teacher.createTeacher);
     router.get('/readteacher/:teacherId',teacher.readTeacher);
-
-    // router.put('/updatestudent/:uuid',student.updateStudent);
-    // // router.delete('/deletestudent/:uuid',student.deleteStudent);
+    router.put('/updateteacher/:uuid',teacher.updateTeacher);
+    router.delete('/deleteteacher/:uuid',teacher.deleteTeacher);
    
 
 
