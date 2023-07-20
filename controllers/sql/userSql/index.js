@@ -1,6 +1,5 @@
 "use strict";
 
-const loginUser = require("../../methods/userMethods/loginUser");
 
 (()=>{
 

@@ -1,65 +1,65 @@
 "use strict";
-//  const createSql = require("../../sql/userSql/createUser.js");
-
 const bcrypt = require("bcrypt");
-const dotenv= require("dotenv");
-const jwt=require("jsonwebtoken")
-dotenv.config()
+const dotenv = require("dotenv");
+const express = require('express');
+const cookieParser = require('cookie-parser');
+
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+// other middleware and route handlers...
+
+const jwt = require("jsonwebtoken");
+dotenv.config();
 
 const { loginSql } = require("../../sql/userSql");
+(()=>{
 
-(() => {
+module.exports = async (req, res) => {
+  const password = req.body.password;
+  const userName = req.body.userName;
 
-    module.exports = async (req, res) => {
+  if (!userName || !password) {
+    return res.status(400).json({
+      message: "Username or Password not present",
+    });
+  } else {
+    try {
+      const user = await loginSql(req);
 
-        const password = req.body.password
-        const userName = req.body.userName
-        if (!userName || !password) {
-            return res.status(400).json({
-                message: "Username or Password not present",
-            })
-        }
+      if (!user) {
+        return res.status(400).json({
+          message: "Login not successful",
+          error: "User not found",
+        });
+      }
 
-        else {
-            try {
+      const result = await bcrypt.compare(password, user.password);
 
-                const [user] = await loginSql(req);
-                if (!user) {
-                    res.status(400).json({
-                        message: "Login not successful",
-                        error: "User not found",
-                    })
-                }
-                else {
-
-                    bcrypt.compare(req.body.password, user.password).then(function (result) {
-                        if (result) {
-                            const maxAge = 3 * 60 * 60;
-                            const token = jwt.sign(
-                                { username:user.username, password: req.body.password, },
-                                process.env.JWT_SECRET_KEY,
-                                {
-                                    expiresIn: maxAge, // 3hrs in sec
-                                }
-                            );
-                            res.cookie("jwt", token, {
-                                httpOnly: true,
-                                maxAge: maxAge * 1000, // 3hrs in ms
-                            });
-
-                        }
-                    })
+      if (result) {
+        const maxAge = 3 * 60 * 60;
+        const token = jwt.sign(
+          { username: user.userName, password: req.body.password },
+          process.env.JWT_SECRET_KEY,
+          {
+            expiresIn: maxAge, // 3hrs in sec
+          }
+        );
 
 
-
-                }
-
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-
+        res.cookie("jwt", token, {
+          httpOnly: true,
+          maxAge: maxAge * 1000, // 3hrs in ms
+        });
+      } else {
+        res.status(401).json({ message: "Invalid credentials" });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal server error" });
     }
-})
-    ();
+  }
+};
+
+})();
