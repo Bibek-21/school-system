@@ -12,7 +12,7 @@
     router.get('/readbook/:bookId',book.readBook);
     router.put('/updatebook/:uuid',book.updateBook);
     router.delete('/deletebook/:uuid',book.deleteBook);
-    router.get("/studentsbybookid/:bookId",book.findStudentByBookId)
+    router.get("/studentbybookid/:bookId",book.findStudentByBookId)
    
 
 
