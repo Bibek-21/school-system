@@ -1,11 +1,10 @@
 "use strict";
 const sql = require("../../sql/studentSql/index");
-const message = require("../../messageConfig/index");
 (() => {
-    module.exports = async (req,res) => {
+    module.exports = async(req) => {
         try {
 
-            const content = await sql.findStudentDetail(req);
+            const content = await sql.findStudentsByDate(req);
 
             if(content){
                 return {message:"Data Founnd",Status:200,data:content[0]}

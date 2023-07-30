@@ -12,7 +12,7 @@ const helper = require("../../../helper/index.js");
                 INNER JOIN teachers ON students.classteacherId = teachers.teacherId)
                 INNER JOIN books ON books.bookId = students.borrowedBookId)
                             
-                where  students.symbolNo=?`, [req.params.symbolNo]
+                where  students.symbolNo=?`, [req]
             );
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)

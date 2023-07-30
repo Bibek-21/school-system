@@ -27,7 +27,8 @@ const schedule = require("node-schedule");
 
 
             const randomRollNo = random();
-            const job = schedule.scheduleJob(process.env.schedule, async () => {
+
+            const job = schedule.scheduleJob(process.env.SCHEDULE, async() => {
 
 
                 const content = await sql.getAllStudent(randomRollNo);
@@ -49,7 +50,6 @@ const schedule = require("node-schedule");
                 }
 
             })
-            job.start();
 
 
             setTimeout(() => {
