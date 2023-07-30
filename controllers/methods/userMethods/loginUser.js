@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
         res.cookie("jwt", token, {
           httpOnly: true,
           maxAge: maxAge * 1000, // 3hrs in ms
-        });
+        }).end();
       } else {
         res.status(401).json({ message: "Invalid credentials" });
       }

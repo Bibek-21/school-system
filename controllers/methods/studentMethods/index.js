@@ -5,7 +5,8 @@
         readStudent: require("./readStudent"),
         updateStudent:require("./updateStudent"),
         deleteStudent: require("./deleteStudent"),
-        findStudentDetail:require("./findStudentDetail.js")
+        findStudentDetail:require("./findStudentDetail.js"),
+        getAllStudent:require("./getAllStudents.js")
 
     }
 })();

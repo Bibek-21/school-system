@@ -6,6 +6,7 @@
         updateStudent:require("./updateStudent"),
         deleteStudent: require("./deleteStudent"),
         findStudentDetail:require("./findStudentsDetail.js"),
+        getAllStudent: require("./getAllStudent.js")
 
     }
 })();
