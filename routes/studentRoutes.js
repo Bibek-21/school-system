@@ -13,7 +13,6 @@
     router.delete('/deletestudent/:uuid',student.deleteStudent);
     router.get('/readstudent/:symbolNo',student.readStudent);
     router.get('/findstudentdetail/:symbolNo',student.findStudentDetail);
-    router.get('/getallstudent/:symbolNo',student.getAllStudent)
    
 
 

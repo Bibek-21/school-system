@@ -3,17 +3,26 @@ const sqlstring = require("sqlstring");
 const helper = require("../../../helper/index.js");
 
 (() => {
-    module.exports = async (req) => {
+    module.exports = async (roll) => {
         try {
 
+            const querystring = sqlstring.format(` SELECT students.studentName, students.guardian, students.symbolNo, teachers.teacherName, books.bookName, authors.authorName
+            FROM (((students
+            JOIN teachers ON students.classteacherId = teachers.teacherId)
+            JOIN books ON books.bookId = students.borrowedBookId)
+            JOIN authors ON books.bookId = authors.bookId)
+            WHERE students.symbolNo = ?`, [roll])
+            
+            // const querystring = sqlstring.format(`SELECT students.studentName, students.guardian,students.symbolNo, teachers.teacherName, books.bookName, authors.authorName
+            //     FROM (((students
+            //     JOIN teachers ON students.classteacherId = teachers.teacherId)
+            //     (JOIN books ON books.bookId = students.borrowedBookId))
+            //     JOIN books ON books.bookId = Authors.bookId
 
-            const querystring = sqlstring.format(`SELECT students.studentName, students.guardianName,students.symbolNo, teachers.teacherName, books.bookName, books.authorName
-                FROM ((students
-                JOIN teachers ON students.classteacherId = teachers.teacherId)
-                JOIN books ON books.bookId = students.borrowedBookId)
+            //     )
                             
-                where  students.symbolNo=?`, [req.params.symbolNo]
-            );
+            //     where  students.symbolNo=?`, [req.params.symbolNo]
+            // );
 
             const [sqlquery] = await helper.mysqlHelper.query(querystring)
 
